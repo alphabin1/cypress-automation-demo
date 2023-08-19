@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-08-18T06:09:22.051Z",
+    "end": "2023-08-18T06:09:25.516Z",
+    "duration": 3465,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f86822a2-8e7f-4e9a-bf03-16b8a10ab2c9",
+      "title": "",
+      "fullFile": "cypress/e2e/demo.cy.js",
+      "file": "cypress/e2e/demo.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "22b1714a-fd17-4509-80ca-2f57bd97aefe",
+          "title": "Smoke tests:",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Invalid Login",
+              "fullTitle": "Smoke tests: Invalid Login",
+              "timedOut": null,
+              "duration": 1541,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.verifyLoginPageIsDisplayed();\ncy.fixture('login.data.json').then(loginData => {\n  loginPage.doLogin(loginData.fakeusername, loginData.fakepassword);\n});\nloginPage.verifyLoginErrorIsVisible();",
+              "err": {},
+              "uuid": "5ae53c88-2fa3-4c69-85ae-d535712c23ef",
+              "parentUUID": "22b1714a-fd17-4509-80ca-2f57bd97aefe",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify valid user should be able to add product and checkout",
+              "fullTitle": "Smoke tests: Verify valid user should be able to add product and checkout",
+              "timedOut": null,
+              "duration": 191,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Verify login page\nloginPage.verifyLoginPageIsDisplayed();\n// login with valid credentials\ncy.fixture('login.data.json').then(loginData => {\n  loginPage.doLogin(loginData.username, loginData.password);\n});\n// verify product page after successfull login\nproductPage.verifyProductsPageIsVisible();\ncy.wait(1000);\n// verify add to card functionality\nproductPage.clickOnAddToCardButton();\ncy.wait(2000);\nproductPage.clickOnCartContainer();\n// verify checkout method\ncheckoutPage.clickOnCheckoutButton();\ncy.fixture('checkout.data.json').then(checkoutData => {\n  checkoutPage.fillCheckoutForm(checkoutData.firstname, checkoutData.lastname, checkoutData.postalcode);\n});\n// Verify finish order\ncheckoutPage.verifyPurchasedProductIsVisible();\ncheckoutPage.clickOnFinishButton();\ncheckoutPage.verifyCompleteOrderText();\ncheckoutPage.clickOnBackHomeButton();\n// Verify logout functionality\nlogoutPage.clickOnMenuButton();\nlogoutPage.clickOnLogoutButton();\n//Verify login page\nloginPage.verifyLoginPageIsDisplayed();",
+              "err": {},
+              "uuid": "78c5e970-cea2-4796-9008-2df6017f1852",
+              "parentUUID": "22b1714a-fd17-4509-80ca-2f57bd97aefe",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5ae53c88-2fa3-4c69-85ae-d535712c23ef",
+            "78c5e970-cea2-4796-9008-2df6017f1852"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1732,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
